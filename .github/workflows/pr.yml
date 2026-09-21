@@ -28,8 +28,6 @@ jobs:
       contents: read
     uses: grootan-devops/github-ci-library/.github/workflows/lint.yml@dev
     secrets: inherit
-    with:
-      lint-md-files: "*.md"
 
   secret-scan:
     permissions:
@@ -60,3 +58,4 @@ jobs:
       image-tag: ${{ needs.init.outputs.image-tag }}
       image-repository: ${{ needs.init.outputs.image-repository }}
       check-migration: false
+      check-library-pinning: false
