@@ -10,7 +10,7 @@ promotes the verified digest to Docker Hub as `grootantech/toolkit:<version>`.
 ## Included E2E files
 
 | File | Purpose |
-|---|---|
+| --- | --- |
 | [`Dockerfile`](./Dockerfile) | Builds the complete toolkit image. |
 | [`ci_image_test.sh`](./ci_image_test.sh) | Verifies every required tool inside the resulting image. |
 | [`.github/workflows/pr.yml`](./.github/workflows/pr.yml) | Builds, tests, scans, and guards candidate images. |
@@ -31,7 +31,7 @@ for versions.
 ### Language runtimes & package managers
 
 | Tool | Notes |
-|---|---|
+| --- | --- |
 | Go | `/usr/local/go`, `GOPATH=/go` |
 | Java (Eclipse Temurin JDK) | `JAVA_HOME=/usr/local/java` |
 | Maven | `MAVEN_HOME=/usr/local/maven` |
@@ -93,7 +93,7 @@ tag via the `BASE_IMAGE_TAG` build argument.
 Configure these Actions variables:
 
 | Variable | Value |
-|---|---|
+| --- | --- |
 | `IMAGE_REGISTRY` | `registry-1.docker.io` |
 | `IMAGE_REPOSITORY` | `grootantech/toolkit` |
 
@@ -103,7 +103,7 @@ compatibility surface is the published OCI image and the smoke-test contract.
 Configure these Actions secrets:
 
 | Secret | Purpose |
-|---|---|
+| --- | --- |
 | `IMAGE_REGISTRY_USERNAME` | Docker Hub account or organization service account. |
 | `IMAGE_REGISTRY_PASSWORD` | Docker Hub access token with permission to push `grootantech/toolkit`. |
 
