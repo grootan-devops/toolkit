@@ -1,0 +1,53 @@
+name: CD · Production Release
+run-name: "CD · ${{ github.event_name }} · ${{ github.sha }}"
+
+on:
+  push:
+    branches: [main]
+    paths-ignore:
+      - ".github/**"
+
+concurrency:
+  group: "release-${{ github.ref }}"
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+
+jobs:
+  init:
+    permissions:
+      contents: read
+      actions: read
+      pull-requests: read
+    uses: grootan-devops/github-ci-library/.github/workflows/init.yml@dev
+    secrets: inherit
+    with:
+      ignore-chart: "true"
+
+  image:
+    needs: init
+    permissions:
+      contents: read
+      packages: write
+    uses: grootan-devops/github-ci-library/.github/workflows/docker.yml@dev
+    secrets: inherit
+    with:
+      is-release: true
+      require-scan: false
+      image-tag: ${{ needs.init.outputs.tag }}
+      release-tag: ${{ needs.init.outputs.tag }}
+      candidate-tag: ${{ needs.init.outputs.candidate-image-tag }}
+      image-repository: ${{ needs.init.outputs.image-repository }}
+      image-dev-repository: ${{ needs.init.outputs.image-dev-repository }}
+
+  release:
+    needs: [init, image]
+    permissions:
+      contents: write
+      actions: read
+    uses: grootan-devops/github-ci-library/.github/workflows/release.yml@dev
+    secrets: inherit
+    with:
+      tag: ${{ needs.init.outputs.tag }}
+      upstream-run-id: ${{ needs.init.outputs.upstream-run-id }}
