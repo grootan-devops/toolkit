@@ -6,6 +6,12 @@ project follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [1.1.0] - 2026-09-22
+
+### Added
+
+- Initial toolkit Docker E2E project.
+
 ## [1.0.0] - 2026-09-19
 
 ### Added
