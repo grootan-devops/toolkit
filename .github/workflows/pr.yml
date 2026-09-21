@@ -42,15 +42,15 @@ jobs:
     uses: grootan-devops/github-ci-library/.github/workflows/secret-scanning.yml@dev
     secrets: inherit
 
-  trivy-cache:
-    needs: init
-    permissions:
-      contents: read
-      actions: write
-    uses: grootan-devops/github-ci-library/.github/workflows/trivy-cache.yml@dev
-    secrets: inherit
-    with:
-      enable-java-db: false
+  # trivy-cache:
+  #   needs: init
+  #   permissions:
+  #     contents: read
+  #     actions: write
+  #   uses: grootan-devops/github-ci-library/.github/workflows/trivy-cache.yml@dev
+  #   secrets: inherit
+  #   with:
+  #     enable-java-db: false
 
   image:
     needs: init
