@@ -17,3 +17,5 @@ jobs:
       contents: read
     uses: grootan-devops/github-ci-library/.github/workflows/lint.yml@dev
     secrets: inherit
+    with:
+      lint-md-files: "*.md"
