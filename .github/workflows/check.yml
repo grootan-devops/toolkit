@@ -1,0 +1,41 @@
+name: Check · Release Prerequisites
+run-name: "Check · ${{ github.event_name }} · ${{ github.sha }}"
+
+on:
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: Version to test for release readiness
+        required: true
+        type: string
+
+concurrency:
+  group: "${{ github.workflow }}-${{ github.ref }}"
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  init:
+    permissions:
+      contents: read
+      actions: read
+      pull-requests: read
+    uses: grootan-devops/github-ci-library/.github/workflows/init.yml@dev
+    secrets: inherit
+    with:
+      tag: ${{ inputs.tag }}
+      ignore-chart: "true"
+
+  check:
+    needs: init
+    permissions:
+      contents: read
+    uses: grootan-devops/github-ci-library/.github/workflows/check.yml@dev
+    secrets: inherit
+    with:
+      tag: ${{ needs.init.outputs.tag }}
+      image-tag: ${{ needs.init.outputs.image-tag }}
+      image-repository: ${{ needs.init.outputs.image-repository }}
+      check-migration: false

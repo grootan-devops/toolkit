@@ -1,0 +1,88 @@
+name: CI · PR Verification
+run-name: "CI · ${{ github.event_name }} · ${{ github.sha }}"
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - "Dockerfile"
+      - ".dockerignore"
+      - "ci_image_test.sh"
+      - "VERSION"
+      - "CHANGELOG.md"
+      - ".github/**"
+
+concurrency:
+  group: "${{ github.workflow }}-${{ github.ref }}"
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  init:
+    permissions:
+      contents: read
+      actions: read
+      pull-requests: read
+    uses: grootan-devops/github-ci-library/.github/workflows/init.yml@dev
+    secrets: inherit
+    with:
+      ignore-chart: "true"
+
+  lint:
+    permissions:
+      contents: read
+    uses: grootan-devops/github-ci-library/.github/workflows/lint.yml@dev
+    secrets: inherit
+
+  secret-scan:
+    permissions:
+      contents: read
+    uses: grootan-devops/github-ci-library/.github/workflows/secret-scanning.yml@dev
+    secrets: inherit
+
+  # trivy-cache:
+  #   needs: init
+  #   permissions:
+  #     contents: read
+  #     actions: write
+  #   uses: grootan-devops/github-ci-library/.github/workflows/trivy-cache.yml@dev
+  #   secrets: inherit
+  #   with:
+  #     enable-java-db: false
+
+  image:
+    needs: init
+    permissions:
+      contents: read
+      packages: write
+    uses: grootan-devops/github-ci-library/.github/workflows/docker.yml@dev
+    secrets: inherit
+    with:
+      image-tag: ${{ needs.init.outputs.image-push-tag }}
+      image-repository: ${{ needs.init.outputs.image-push-repository }}
+      test: true
+
+  # image-scan:
+  #   needs: [image, trivy-cache]
+  #   permissions:
+  #     contents: read
+  #     checks: write
+  #   uses: grootan-devops/github-ci-library/.github/workflows/scan.yml@dev
+  #   secrets: inherit
+  #   with:
+  #     scan-type: image
+  #     image-ref: ${{ needs.image.outputs.image-ref-digest }}
+
+  check:
+    needs: init
+    permissions:
+      contents: read
+    uses: grootan-devops/github-ci-library/.github/workflows/check.yml@dev
+    secrets: inherit
+    with:
+      tag: ${{ needs.init.outputs.tag }}
+      image-tag: ${{ needs.init.outputs.image-tag }}
+      image-repository: ${{ needs.init.outputs.image-repository }}
+      check-migration: false

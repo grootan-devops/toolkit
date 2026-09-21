@@ -1,0 +1,20 @@
+# OS and editor cruft
+.DS_Store
+Thumbs.db
+*.swp
+*~
+.idea/
+.vscode/
+
+# Secrets
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# Local scan and build output
+*.log
+trivy-results.*
+sbom.*
+.trivy/
