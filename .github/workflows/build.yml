@@ -22,16 +22,6 @@ jobs:
     with:
       ignore-chart: "true"
 
-  # trivy-cache:
-  #   needs: init
-  #   permissions:
-  #     contents: read
-  #     actions: write
-  #   uses: grootan-devops/github-ci-library/.github/workflows/trivy-cache.yml@dev
-  #   secrets: inherit
-  #   with:
-  #     enable-java-db: false
-
   image:
     needs: init
     permissions:
@@ -43,14 +33,3 @@ jobs:
       image-tag: ${{ needs.init.outputs.image-push-tag }}
       image-repository: ${{ needs.init.outputs.image-push-repository }}
       test: true
-
-  # image-scan:
-  #   needs: [image, trivy-cache]
-  #   permissions:
-  #     contents: read
-  #     checks: write
-  #   uses: grootan-devops/github-ci-library/.github/workflows/scan.yml@dev
-  #   secrets: inherit
-  #   with:
-  #     scan-type: image
-  #     image-ref: ${{ needs.image.outputs.image-ref-digest }}
