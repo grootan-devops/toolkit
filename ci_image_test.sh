@@ -231,4 +231,3 @@ if [ "${FAILURES}" -gt 0 ]; then
 fi
 
 printf '\nImage smoke test passed.\n'
-
