@@ -22,7 +22,7 @@ jobs:
       contents: read
       actions: read
       pull-requests: read
-    uses: grootan-devops/github-ci-library/.github/workflows/init.yml@dev
+    uses: grootan-devops/github-ci-library/.github/workflows/init.yml@1.0.0
     secrets: inherit
     with:
       tag: ${{ inputs.tag }}
@@ -32,11 +32,10 @@ jobs:
     needs: init
     permissions:
       contents: read
-    uses: grootan-devops/github-ci-library/.github/workflows/check.yml@dev
+    uses: grootan-devops/github-ci-library/.github/workflows/check.yml@1.0.0
     secrets: inherit
     with:
       tag: ${{ needs.init.outputs.tag }}
       image-tag: ${{ needs.init.outputs.image-tag }}
       image-repository: ${{ needs.init.outputs.image-repository }}
       check-migration: false
-      check-library-pinning: false
