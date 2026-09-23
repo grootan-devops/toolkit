@@ -5,12 +5,12 @@
 This repository is the end-to-end consumer project for the Grootan GitHub CI
 library's Docker pipeline. It carries a reviewable snapshot of the toolkit
 `Dockerfile` and its image smoke test, builds and scans candidate images, then
-promotes the verified digest to Docker Hub as `grootantec/toolkit:<version>`.
+promotes the verified digest to Docker Hub as `grootantech/toolkit:<version>`.
 
 ## Included E2E files
 
 | File | Purpose |
-|---|---|
+| --- | --- |
 | [`Dockerfile`](./Dockerfile) | Builds the complete toolkit image. |
 | [`ci_image_test.sh`](./ci_image_test.sh) | Verifies every required tool inside the resulting image. |
 | [`.github/workflows/pr.yml`](./.github/workflows/pr.yml) | Builds, tests, scans, and guards candidate images. |
@@ -31,7 +31,7 @@ for versions.
 ### Language runtimes & package managers
 
 | Tool | Notes |
-|---|---|
+| --- | --- |
 | Go | `/usr/local/go`, `GOPATH=/go` |
 | Java (Eclipse Temurin JDK) | `JAVA_HOME=/usr/local/java` |
 | Maven | `MAVEN_HOME=/usr/local/maven` |
@@ -85,7 +85,7 @@ swag (Swagger for Go), GitLab `release-cli`
 The build is multi-stage. Tools are downloaded and unpacked in a builder stage,
 with `release-cli` and the Buildx plugin pulled from their own upstream images,
 then copied into the final stage. The final stage — the image that is published
-as `grootantec/toolkit:<version>` — is `redhat/ubi9-minimal`, pinned by digest
+as `grootantech/toolkit:<version>` — is `redhat/ubi9-minimal`, pinned by digest
 tag via the `BASE_IMAGE_TAG` build argument.
 
 ## GitHub repository configuration
@@ -93,9 +93,9 @@ tag via the `BASE_IMAGE_TAG` build argument.
 Configure these Actions variables:
 
 | Variable | Value |
-|---|---|
+| --- | --- |
 | `IMAGE_REGISTRY` | `registry-1.docker.io` |
-| `IMAGE_REPOSITORY` | `grootantec/toolkit` |
+| `IMAGE_REPOSITORY` | `grootantech/toolkit` |
 
 This Docker-only project deliberately disables the shared migration guard. Its
 compatibility surface is the published OCI image and the smoke-test contract.
@@ -103,9 +103,9 @@ compatibility surface is the published OCI image and the smoke-test contract.
 Configure these Actions secrets:
 
 | Secret | Purpose |
-|---|---|
+| --- | --- |
 | `IMAGE_REGISTRY_USERNAME` | Docker Hub account or organization service account. |
-| `IMAGE_REGISTRY_PASSWORD` | Docker Hub access token with permission to push `grootantec/toolkit`. |
+| `IMAGE_REGISTRY_PASSWORD` | Docker Hub access token with permission to push `grootantech/toolkit`. |
 
 ## License
 

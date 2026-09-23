@@ -72,4 +72,3 @@ data, private keys, access tokens, or unsafe live exploit payloads.
   coordinated disclosure is appropriate.
 - Submission does not guarantee acknowledgement, investigation, remediation,
   disclosure, or a particular response timeline.
-
