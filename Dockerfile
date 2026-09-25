@@ -1,5 +1,5 @@
 # renovate: datasource=docker depName=redhat/ubi9-minimal versioning=redhat
-ARG BASE_IMAGE_TAG=9.8-1789546276
+ARG BASE_IMAGE_TAG=9.8-1790074235
 
 # renovate: datasource=docker depName=python
 ARG PYTHON_VERSION=3.12
@@ -40,9 +40,9 @@ ARG SWAG_VERSION=1.16.6
 # renovate: datasource=github-releases depName=securego/gosec extractVersion=^v?(?<version>.+)$
 ARG GOSEC_VERSION=2.29.0
 # renovate: datasource=github-releases depName=golangci/golangci-lint extractVersion=^v?(?<version>.+)$
-ARG GOLANGCI_LINT_VERSION=2.13.2
+ARG GOLANGCI_LINT_VERSION=2.14.0
 # renovate: datasource=github-releases depName=hashicorp/terraform extractVersion=^v?(?<version>.+)$
-ARG TERRAFORM_VERSION=1.16.3
+ARG TERRAFORM_VERSION=1.16.4
 # renovate: datasource=github-releases depName=opentofu/opentofu extractVersion=^v?(?<version>.+)$
 ARG TOFU_VERSION=1.12.6
 # renovate: datasource=github-releases depName=adoptium/temurin25-binaries extractVersion=^jdk-(?<version>.+)$
@@ -50,11 +50,11 @@ ARG JAVA_VERSION=25.0.4.1+1
 # renovate: datasource=github-releases depName=apache/maven extractVersion=^maven-(?<version>.+)$
 ARG MAVEN_VERSION=3.9.16
 # renovate: datasource=github-releases depName=astral-sh/uv extractVersion=^v?(?<version>.+)$
-ARG UV_VERSION=0.12.17
+ARG UV_VERSION=0.12.19
 # renovate: datasource=github-tags depName=nodejs/node extractVersion=^v?(?<version>.+)$
-ARG NODE_VERSION=24.21.0
+ARG NODE_VERSION=26.10.0
 # renovate: datasource=npm depName=npm
-ARG NPM_VERSION=12.0.2
+ARG NPM_VERSION=12.1.0
 # renovate: datasource=npm depName=yarn
 ARG YARN_VERSION=1.22.22
 
