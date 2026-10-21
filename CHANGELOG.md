@@ -6,6 +6,12 @@ project follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [1.2.0] - 2026-10-22
+
+### Changed
+
+- Updated CI library to `1.6.0`
+
 ## [1.1.0] - 2026-09-22
 
 ### Changed
