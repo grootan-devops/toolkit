@@ -57,6 +57,8 @@ ARG NODE_VERSION=26.12.1
 ARG NPM_VERSION=12.2.1
 # renovate: datasource=npm depName=yarn
 ARG YARN_VERSION=1.22.22
+# renovate: datasource=npm depName=corepack
+ARG COREPACK_VERSION=0.36.0
 
 FROM registry.gitlab.com/gitlab-org/release-cli:v${RELEASE_IMAGE_TAG} AS registry
 
@@ -89,6 +91,7 @@ ARG UV_VERSION
 ARG NODE_VERSION
 ARG NPM_VERSION
 ARG YARN_VERSION
+ARG COREPACK_VERSION
 
 # hadolint ignore=DL3041
 RUN microdnf update -y && \
@@ -138,6 +141,10 @@ RUN curl -fsSL "https://github.com/betterleaks/betterleaks/releases/download/v${
     ln -sf /usr/local/node/bin/npx /usr/local/bin/npx && \
     export PATH="/usr/local/node/bin:$PATH" && \
     npm install -g "npm@${NPM_VERSION}" "yarn@${YARN_VERSION}" && \
+    npm pack "corepack@${COREPACK_VERSION}" --silent && \
+    mkdir -p /usr/local/node/lib/node_modules/corepack && \
+    tar -xzf "corepack-${COREPACK_VERSION}.tgz" --strip-components=1 -C /usr/local/node/lib/node_modules/corepack && \
+    ln -sf ../lib/node_modules/corepack/dist/corepack.js /usr/local/node/bin/corepack && \
     npm cache clean --force && \
     ln -sf /usr/local/node/bin/yarn /usr/local/bin/yarn && \
     ln -sf /usr/local/node/bin/yarnpkg /usr/local/bin/yarnpkg && \
