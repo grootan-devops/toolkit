@@ -1,62 +1,64 @@
 # renovate: datasource=docker depName=redhat/ubi9-minimal versioning=redhat
-ARG BASE_IMAGE_TAG=9.8-1789546276
+ARG BASE_IMAGE_TAG=9.8-1791898448
 
 # renovate: datasource=docker depName=python
 ARG PYTHON_VERSION=3.12
 # renovate: datasource=docker depName=registry.gitlab.com/gitlab-org/release-cli
 ARG RELEASE_IMAGE_TAG=0.24.0
 # renovate: datasource=github-releases depName=mikefarah/yq extractVersion=^v?(?<version>.+)$
-ARG YQ_VERSION=4.53.6
+ARG YQ_VERSION=4.54.1
 # renovate: datasource=github-releases depName=hadolint/hadolint extractVersion=^v?(?<version>.+)$
 ARG HADOLINT_VERSION=2.15.1
 # renovate: datasource=docker depName=docker/buildx extractVersion=^v?(?<version>.+)$
-ARG BUILDX_VERSION=0.37.1
+ARG BUILDX_VERSION=0.38.1
 # renovate: datasource=github-releases depName=aquasecurity/trivy extractVersion=^v?(?<version>.+)$
-ARG TRIVY_VERSION=0.74.0
+ARG TRIVY_VERSION=0.76.1
 # renovate: datasource=github-releases depName=helm/helm extractVersion=^v?(?<version>.+)$
-ARG HELM_VERSION=4.3.0
+ARG HELM_VERSION=4.3.1
 # renovate: datasource=github-releases depName=terraform-linters/tflint extractVersion=^v?(?<version>.+)$
-ARG TFLINT_VERSION=0.64.0
+ARG TFLINT_VERSION=0.65.0
 # renovate: datasource=github-releases depName=terraform-docs/terraform-docs extractVersion=^v?(?<version>.+)$
 ARG TF_DOCS_VERSION=0.24.0
 # renovate: datasource=github-releases depName=norwoodj/helm-docs extractVersion=^v?(?<version>.+)$
 ARG HELM_DOCS_VERSION=1.14.2
 # renovate: datasource=github-releases depName=betterleaks/betterleaks extractVersion=^v?(?<version>.+)$
-ARG BETTERLEAKS_VERSION=1.8.1
+ARG BETTERLEAKS_VERSION=1.9.0
 # renovate: datasource=github-releases depName=google/go-containerregistry extractVersion=^v?(?<version>.+)$
 ARG CRANE_VERSION=0.22.1
 # renovate: datasource=npm depName=@biomejs/biome
-ARG BIOME_CLI_VERSION=2.5.14
+ARG BIOME_CLI_VERSION=2.6.2
 # renovate: datasource=github-releases depName=rhysd/actionlint extractVersion=^v?(?<version>.+)$
 ARG ACTIONLINT_VERSION=1.7.12
 # renovate: datasource=github-releases depName=koalaman/shellcheck extractVersion=^v?(?<version>.+)$
 ARG SHELLCHECK_VERSION=0.11.0
 # renovate: datasource=github-releases depName=helm-unittest/helm-unittest extractVersion=^v?(?<version>.+)$
-ARG HELM_UNITTEST_VERSION=1.1.2
+ARG HELM_UNITTEST_VERSION=1.2.1
 # renovate: datasource=github-tags depName=golang/go extractVersion=^go(?<version>.+)$
-ARG GO_VERSION=1.27.1
+ARG GO_VERSION=1.27.3
 # renovate: datasource=github-releases depName=swaggo/swag extractVersion=^v?(?<version>.+)$
 ARG SWAG_VERSION=1.16.6
 # renovate: datasource=github-releases depName=securego/gosec extractVersion=^v?(?<version>.+)$
-ARG GOSEC_VERSION=2.29.0
+ARG GOSEC_VERSION=2.30.0
 # renovate: datasource=github-releases depName=golangci/golangci-lint extractVersion=^v?(?<version>.+)$
-ARG GOLANGCI_LINT_VERSION=2.13.2
+ARG GOLANGCI_LINT_VERSION=2.15.0
 # renovate: datasource=github-releases depName=hashicorp/terraform extractVersion=^v?(?<version>.+)$
-ARG TERRAFORM_VERSION=1.16.3
+ARG TERRAFORM_VERSION=1.17.0
 # renovate: datasource=github-releases depName=opentofu/opentofu extractVersion=^v?(?<version>.+)$
-ARG TOFU_VERSION=1.12.6
+ARG TOFU_VERSION=1.13.2
 # renovate: datasource=github-releases depName=adoptium/temurin25-binaries extractVersion=^jdk-(?<version>.+)$
 ARG JAVA_VERSION=25.0.4.1+1
 # renovate: datasource=github-releases depName=apache/maven extractVersion=^maven-(?<version>.+)$
-ARG MAVEN_VERSION=3.9.16
+ARG MAVEN_VERSION=3.10.0
 # renovate: datasource=github-releases depName=astral-sh/uv extractVersion=^v?(?<version>.+)$
-ARG UV_VERSION=0.12.17
+ARG UV_VERSION=0.13.5
 # renovate: datasource=github-tags depName=nodejs/node extractVersion=^v?(?<version>.+)$
-ARG NODE_VERSION=24.21.0
+ARG NODE_VERSION=26.12.1
 # renovate: datasource=npm depName=npm
-ARG NPM_VERSION=12.0.2
+ARG NPM_VERSION=12.2.1
 # renovate: datasource=npm depName=yarn
 ARG YARN_VERSION=1.22.22
+# renovate: datasource=npm depName=corepack
+ARG COREPACK_VERSION=0.36.0
 
 FROM registry.gitlab.com/gitlab-org/release-cli:v${RELEASE_IMAGE_TAG} AS registry
 
@@ -89,10 +91,11 @@ ARG UV_VERSION
 ARG NODE_VERSION
 ARG NPM_VERSION
 ARG YARN_VERSION
+ARG COREPACK_VERSION
 
 # hadolint ignore=DL3041
 RUN microdnf update -y && \
-    microdnf --nodocs --setopt install_weak_deps=0 install -y zip unzip gzip git tar openssl xz && \
+    microdnf --nodocs --setopt install_weak_deps=0 install -y zip unzip gzip git tar openssl xz libatomic && \
     microdnf clean all
 
 WORKDIR /tmp
@@ -138,6 +141,10 @@ RUN curl -fsSL "https://github.com/betterleaks/betterleaks/releases/download/v${
     ln -sf /usr/local/node/bin/npx /usr/local/bin/npx && \
     export PATH="/usr/local/node/bin:$PATH" && \
     npm install -g "npm@${NPM_VERSION}" "yarn@${YARN_VERSION}" && \
+    npm pack "corepack@${COREPACK_VERSION}" --silent && \
+    mkdir -p /usr/local/node/lib/node_modules/corepack && \
+    tar -xzf "corepack-${COREPACK_VERSION}.tgz" --strip-components=1 -C /usr/local/node/lib/node_modules/corepack && \
+    ln -sf ../lib/node_modules/corepack/dist/corepack.js /usr/local/node/bin/corepack && \
     npm cache clean --force && \
     ln -sf /usr/local/node/bin/yarn /usr/local/bin/yarn && \
     ln -sf /usr/local/node/bin/yarnpkg /usr/local/bin/yarnpkg && \
@@ -186,7 +193,7 @@ WORKDIR /usr/local/bin/
 RUN microdnf update -y && microdnf upgrade -y && \
     microdnf --nodocs --setopt install_weak_deps=0 install -y \
         yum-utils zip unzip gzip tar xz make which git wget jq openssl less \
-        openssh-clients s-nail findutils sshpass rsync buildah podman "python${PYTHON_VERSION}" diffutils patch && \
+        openssh-clients s-nail findutils sshpass rsync buildah podman "python${PYTHON_VERSION}" diffutils patch libatomic && \
     yum-config-manager --add-repo "https://download.docker.com/linux/centos/docker-ce.repo" && \
     microdnf install --nodocs --setopt install_weak_deps=0 -y docker-ce-cli && \
     ln -sf "/usr/bin/python${PYTHON_VERSION}" /usr/local/bin/python && \
