@@ -95,7 +95,7 @@ ARG COREPACK_VERSION
 
 # hadolint ignore=DL3041
 RUN microdnf update -y && \
-    microdnf --nodocs --setopt install_weak_deps=0 install -y zip unzip gzip git tar openssl xz && \
+    microdnf --nodocs --setopt install_weak_deps=0 install -y zip unzip gzip git tar openssl xz libatomic && \
     microdnf clean all
 
 WORKDIR /tmp
@@ -193,7 +193,7 @@ WORKDIR /usr/local/bin/
 RUN microdnf update -y && microdnf upgrade -y && \
     microdnf --nodocs --setopt install_weak_deps=0 install -y \
         yum-utils zip unzip gzip tar xz make which git wget jq openssl less \
-        openssh-clients s-nail findutils sshpass rsync buildah podman "python${PYTHON_VERSION}" diffutils patch && \
+        openssh-clients s-nail findutils sshpass rsync buildah podman "python${PYTHON_VERSION}" diffutils patch libatomic && \
     yum-config-manager --add-repo "https://download.docker.com/linux/centos/docker-ce.repo" && \
     microdnf install --nodocs --setopt install_weak_deps=0 -y docker-ce-cli && \
     ln -sf "/usr/bin/python${PYTHON_VERSION}" /usr/local/bin/python && \
