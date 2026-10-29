@@ -6,6 +6,13 @@ project follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [2.0.1] - 2026-10-24
+
+### Changed
+
+- Updated [`@biomejs/biome`](https://github.com/biomejs/biome) from [`2.6.2` to `2.6.3`](https://app.renovatebot.com/package-diff?name=%40biomejs%2Fbiome&from=2.6.2&to=2.6.3)
+- Updated `redhat/ubi9-minimal` from `9.8-1791898448` to `9.8-1792742033`
+
 ## [2.0.0] - 2026-10-23
 
 ### Changed

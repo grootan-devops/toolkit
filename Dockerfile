@@ -1,5 +1,5 @@
 # renovate: datasource=docker depName=redhat/ubi9-minimal versioning=redhat
-ARG BASE_IMAGE_TAG=9.8-1791898448
+ARG BASE_IMAGE_TAG=9.8-1792742033
 
 # renovate: datasource=docker depName=python
 ARG PYTHON_VERSION=3.12
@@ -26,7 +26,7 @@ ARG BETTERLEAKS_VERSION=1.9.0
 # renovate: datasource=github-releases depName=google/go-containerregistry extractVersion=^v?(?<version>.+)$
 ARG CRANE_VERSION=0.22.1
 # renovate: datasource=npm depName=@biomejs/biome
-ARG BIOME_CLI_VERSION=2.6.2
+ARG BIOME_CLI_VERSION=2.6.3
 # renovate: datasource=github-releases depName=rhysd/actionlint extractVersion=^v?(?<version>.+)$
 ARG ACTIONLINT_VERSION=1.7.12
 # renovate: datasource=github-releases depName=koalaman/shellcheck extractVersion=^v?(?<version>.+)$
