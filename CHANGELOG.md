@@ -6,6 +6,22 @@ project follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [2.1.0] - 2026-11-07
+
+### Changed
+
+- Updated [`@biomejs/biome`](https://github.com/biomejs/biome) from [`2.6.3` to `2.6.6`](https://app.renovatebot.com/package-diff?name=%40biomejs%2Fbiome&from=2.6.3&to=2.6.6)
+- Updated [`aquasecurity/trivy`](https://github.com/aquasecurity/trivy) from [`0.76.1` to `0.76.2`](https://github.com/aquasecurity/trivy/releases/tag/0.76.2)
+- Updated [`astral-sh/uv`](https://github.com/astral-sh/uv) from [`0.13.5` to `0.13.7`](https://github.com/astral-sh/uv/releases/tag/0.13.7)
+- Updated [`betterleaks/betterleaks`](https://github.com/betterleaks/betterleaks) from [`1.9.0` to `1.10.0`](https://github.com/betterleaks/betterleaks/releases/tag/1.10.0)
+- Updated [`docker/buildx-bin`](https://github.com/docker/buildx) from `0.38.1` to `0.38.2`
+- Updated [`hashicorp/terraform`](https://github.com/hashicorp/terraform) from [`1.17.0` to `1.17.1`](https://github.com/hashicorp/terraform/releases/tag/1.17.1)
+- Updated [`mikefarah/yq`](https://github.com/mikefarah/yq) from [`4.54.1` to `4.54.2`](https://github.com/mikefarah/yq/releases/tag/4.54.2)
+- Updated [`nodejs/node`](https://github.com/nodejs/node) from [`26.12.1` to `26.13.0`](https://github.com/nodejs/node/releases/tag/26.13.0)
+- Updated [`npm`](https://github.com/npm/cli) from [`12.2.1` to `12.2.2`](https://app.renovatebot.com/package-diff?name=npm&from=12.2.1&to=12.2.2)
+- Updated [`opentofu/opentofu`](https://github.com/opentofu/opentofu) from [`1.13.2` to `1.13.9`](https://github.com/opentofu/opentofu/releases/tag/1.13.9)
+- Updated `redhat/ubi9-minimal` from `9.8-1792742033` to `9.8-1793862054`
+
 ## [2.0.1] - 2026-10-24
 
 ### Changed
