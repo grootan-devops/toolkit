@@ -1,18 +1,18 @@
 # renovate: datasource=docker depName=redhat/ubi9-minimal versioning=redhat
-ARG BASE_IMAGE_TAG=9.8-1792742033
+ARG BASE_IMAGE_TAG=9.8-1793862054
 
 # renovate: datasource=docker depName=python
 ARG PYTHON_VERSION=3.12
 # renovate: datasource=docker depName=registry.gitlab.com/gitlab-org/release-cli
 ARG RELEASE_IMAGE_TAG=0.24.0
 # renovate: datasource=github-releases depName=mikefarah/yq extractVersion=^v?(?<version>.+)$
-ARG YQ_VERSION=4.54.1
+ARG YQ_VERSION=4.54.2
 # renovate: datasource=github-releases depName=hadolint/hadolint extractVersion=^v?(?<version>.+)$
 ARG HADOLINT_VERSION=2.15.1
 # renovate: datasource=docker depName=docker/buildx extractVersion=^v?(?<version>.+)$
-ARG BUILDX_VERSION=0.38.1
+ARG BUILDX_VERSION=0.38.2
 # renovate: datasource=github-releases depName=aquasecurity/trivy extractVersion=^v?(?<version>.+)$
-ARG TRIVY_VERSION=0.76.1
+ARG TRIVY_VERSION=0.76.2
 # renovate: datasource=github-releases depName=helm/helm extractVersion=^v?(?<version>.+)$
 ARG HELM_VERSION=4.3.1
 # renovate: datasource=github-releases depName=terraform-linters/tflint extractVersion=^v?(?<version>.+)$
@@ -22,11 +22,11 @@ ARG TF_DOCS_VERSION=0.24.0
 # renovate: datasource=github-releases depName=norwoodj/helm-docs extractVersion=^v?(?<version>.+)$
 ARG HELM_DOCS_VERSION=1.14.2
 # renovate: datasource=github-releases depName=betterleaks/betterleaks extractVersion=^v?(?<version>.+)$
-ARG BETTERLEAKS_VERSION=1.9.0
+ARG BETTERLEAKS_VERSION=1.10.0
 # renovate: datasource=github-releases depName=google/go-containerregistry extractVersion=^v?(?<version>.+)$
 ARG CRANE_VERSION=0.22.1
 # renovate: datasource=npm depName=@biomejs/biome
-ARG BIOME_CLI_VERSION=2.6.3
+ARG BIOME_CLI_VERSION=2.6.6
 # renovate: datasource=github-releases depName=rhysd/actionlint extractVersion=^v?(?<version>.+)$
 ARG ACTIONLINT_VERSION=1.7.12
 # renovate: datasource=github-releases depName=koalaman/shellcheck extractVersion=^v?(?<version>.+)$
@@ -42,19 +42,19 @@ ARG GOSEC_VERSION=2.30.0
 # renovate: datasource=github-releases depName=golangci/golangci-lint extractVersion=^v?(?<version>.+)$
 ARG GOLANGCI_LINT_VERSION=2.15.0
 # renovate: datasource=github-releases depName=hashicorp/terraform extractVersion=^v?(?<version>.+)$
-ARG TERRAFORM_VERSION=1.17.0
+ARG TERRAFORM_VERSION=1.17.1
 # renovate: datasource=github-releases depName=opentofu/opentofu extractVersion=^v?(?<version>.+)$
-ARG TOFU_VERSION=1.13.2
+ARG TOFU_VERSION=1.13.9
 # renovate: datasource=github-releases depName=adoptium/temurin25-binaries extractVersion=^jdk-(?<version>.+)$
 ARG JAVA_VERSION=25.0.4.1+1
 # renovate: datasource=github-releases depName=apache/maven extractVersion=^maven-(?<version>.+)$
 ARG MAVEN_VERSION=3.10.0
 # renovate: datasource=github-releases depName=astral-sh/uv extractVersion=^v?(?<version>.+)$
-ARG UV_VERSION=0.13.5
+ARG UV_VERSION=0.13.7
 # renovate: datasource=github-tags depName=nodejs/node extractVersion=^v?(?<version>.+)$
-ARG NODE_VERSION=26.12.1
+ARG NODE_VERSION=26.13.0
 # renovate: datasource=npm depName=npm
-ARG NPM_VERSION=12.2.1
+ARG NPM_VERSION=12.2.2
 # renovate: datasource=npm depName=yarn
 ARG YARN_VERSION=1.22.22
 # renovate: datasource=npm depName=corepack
