@@ -6,6 +6,25 @@ project follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [2.2.0] - 2026-11-19
+
+### Changed
+
+- Updated [`@biomejs/biome`](https://github.com/biomejs/biome) from [`2.6.6` to `2.6.8`](https://app.renovatebot.com/package-diff?name=%40biomejs%2Fbiome&from=2.6.6&to=2.6.8)
+- Updated [`apache/maven`](https://github.com/apache/maven) from [`3.10.0` to `3.10.1`](https://github.com/apache/maven/releases/tag/3.10.1)
+- Updated [`astral-sh/uv`](https://github.com/astral-sh/uv) from [`0.13.7` to `0.13.9`](https://github.com/astral-sh/uv/releases/tag/0.13.9)
+- Updated [`betterleaks/betterleaks`](https://github.com/betterleaks/betterleaks) from [`1.10.0` to `1.10.1`](https://github.com/betterleaks/betterleaks/releases/tag/1.10.1)
+- Updated [`docker/buildx-bin`](https://github.com/docker/buildx) from `0.38.2` to `0.39.0`
+- Updated [`golang/go`](https://github.com/golang/go) from [`1.27.3` to `1.27.4`](https://github.com/golang/go/releases/tag/1.27.4)
+- Updated [`hashicorp/terraform`](https://github.com/hashicorp/terraform) from [`1.17.1` to `1.17.2`](https://github.com/hashicorp/terraform/releases/tag/1.17.2)
+- Updated [`helm/helm`](https://github.com/helm/helm) from [`4.3.1` to `4.3.2`](https://github.com/helm/helm/releases/tag/4.3.2)
+- Updated [`mikefarah/yq`](https://github.com/mikefarah/yq) from [`4.54.2` to `4.54.3`](https://github.com/mikefarah/yq/releases/tag/4.54.3)
+- Updated [`nodejs/node`](https://github.com/nodejs/node) from [`26.13.0` to `26.13.1`](https://github.com/nodejs/node/releases/tag/26.13.1)
+- Updated [`npm`](https://github.com/npm/cli) from [`12.2.2` to `12.2.3`](https://app.renovatebot.com/package-diff?name=npm&from=12.2.2&to=12.2.3)
+- Updated `redhat/ubi9-minimal` from `9.8-1793862054` to `9.9-1795001629`
+- Updated [`terraform-docs/terraform-docs`](https://github.com/terraform-docs/terraform-docs) from [`0.24.0` to `0.25.1`](https://github.com/terraform-docs/terraform-docs/releases/tag/0.25.1)
+- Updated [`terraform-linters/tflint`](https://github.com/terraform-linters/tflint) from [`0.65.0` to `0.66.0`](https://github.com/terraform-linters/tflint/releases/tag/0.66.0)
+
 ## [2.1.0] - 2026-11-07
 
 ### Changed
