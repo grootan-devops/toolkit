@@ -104,7 +104,7 @@ RUN curl -fsSL "https://github.com/betterleaks/betterleaks/releases/download/v${
     curl -fsSL "https://go.dev/dl/go${GO_VERSION}.linux-amd64.tar.gz" -o go.tar.gz & \
     curl -fsSL "https://github.com/swaggo/swag/releases/download/v${SWAG_VERSION}/swag_${SWAG_VERSION}_Linux_x86_64.tar.gz" -o swag.tar.gz & \
     curl -fsSL "https://github.com/adoptium/temurin25-binaries/releases/download/jdk-${JAVA_VERSION}/OpenJDK25U-jdk_x64_linux_hotspot_${JAVA_VERSION%%+*}_${JAVA_VERSION##*+}.tar.gz" -o openjdk.tar.gz & \
-    curl -fsSL "https://dlcdn.apache.org/maven/maven-3/${MAVEN_VERSION}/binaries/apache-maven-${MAVEN_VERSION}-bin.tar.gz" -o maven.tar.gz & \
+    curl -fsSL "https://repo.maven.apache.org/maven2/org/apache/maven/apache-maven/${MAVEN_VERSION}/apache-maven-${MAVEN_VERSION}-bin.tar.gz" -o maven.tar.gz & \
     curl -fsSL "https://github.com/astral-sh/uv/releases/download/${UV_VERSION}/uv-x86_64-unknown-linux-musl.tar.gz" -o uv.tar.gz & \
     curl -fsSL "https://nodejs.org/dist/v${NODE_VERSION}/node-v${NODE_VERSION}-linux-x64.tar.gz" -o node.tar.gz & \
     curl -fsSL "https://get.helm.sh/helm-v${HELM_VERSION}-linux-amd64.tar.gz" -o helm.tar.gz & \
